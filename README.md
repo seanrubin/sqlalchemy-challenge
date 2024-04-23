@@ -64,7 +64,7 @@ Now that you’ve completed your initial analysis, you’ll design a Flask API b
 
 1. /
 
-  Start at the homepage.
+    Start at the homepage.
 
   List all the available routes.
 
