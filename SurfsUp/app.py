@@ -25,7 +25,7 @@ base.prepare(autoload_with=engine)
 
 # Save references to each table
 Station = base.classes.station
-measurement = base.classes.measurement
+Measurement = base.classes.measurement
 
 # Create our session (link) from Python to the DB
 session = Session(engine)
@@ -61,7 +61,7 @@ def precipitation():
     one_year= dt.date(2017, 8, 23)-dt.timedelta(days=365)
     prev_last_date = dt.date(one_year.year, one_year.month, one_year.day)
 
-    results= session.query(measurement.date, measurement.prcp).filter(measurement.date >= prev_last_date).order_by(measurement.date.desc()).all()
+    results= session.query(Measurement.date, Measurement.prcp).filter(Measurement.date >= prev_last_date).order_by(Measurement.date.desc()).all()
 
 
     p_dict = dict(results)
@@ -94,8 +94,8 @@ def tobs():
      session = Session(engine)
 
 
-     queryresult = session.query( measurement.date, measurement.tobs).filter(measurement.station=='USC00519281')\
-     .filter(measurement.date>='2016-08-23').all()
+     queryresult = session.query( Measurement.date, Measurement.tobs).filter(Measurement.station=='USC00519281')\
+     .filter(Measurement.date>='2016-08-23').all()
 
 
      tob_obs = []
@@ -111,8 +111,8 @@ def tobs():
 
 def get_temps_start(start):
     session = Session(engine)
-    results = session.query(func.min(measurement.tobs), func.avg(measurement.tobs), func.max(measurement.tobs)).\
-              filter(measurement.date >= start).all()
+    results = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+              filter(Measurement.date >= start).all()
     session.close()
 
     temps = []
@@ -129,8 +129,8 @@ def get_temps_start(start):
 @app.route("/api/v1.0/<start>/<end>")
 def get_temps_start_end(start, end):
     session = Session(engine)
-    results = session.query(func.min(measurement.tobs), func.avg(measurement.tobs), func.max(measurement.tobs)).\
-              filter(measurement.date >= start).filter(measurement.date <= end).all()
+    results = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+              filter(Measurement.date >= start).filter(Measurement.date <= end).all()
     session.close()
 
     temps = []
