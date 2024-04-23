@@ -33,7 +33,13 @@ Plot the results by using the DataFrame plot method, as the following image show
 
 A screenshot depicts the plot.
 
+![image](https://github.com/seanrubin/sqlalchemy-challenge/assets/31460184/e67799fd-c83a-408c-b113-48451debd3db)
+
+
 Use Pandas to print the summary statistics for the precipitation data.
+
+![image](https://github.com/seanrubin/sqlalchemy-challenge/assets/31460184/5d2d8d0e-7f96-485e-9b39-5ddc270ae1be)
+
 
 # Station Analysis
 Design a query to calculate the total number of stations in the dataset.
@@ -56,6 +62,9 @@ Query the previous 12 months of TOBS data for that station.
 Plot the results as a histogram with bins=12, as the following image shows:
 
 A screenshot depicts the histogram.
+
+![image](https://github.com/seanrubin/sqlalchemy-challenge/assets/31460184/e98f5af3-86b8-4486-b84a-69e069fde18c)
+
 
 Close your session.
 
